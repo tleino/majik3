@@ -1,3 +1,21 @@
+Foreword
+--------
+
+This repository contains legacy source code, but may be of
+historical interest to someone. 
+
+The code is written in LPC, which is a C-like scripting
+language. It requires MudOS program to run it, and as of
+2021-01-06 the FluffOS LPMUD driver should do the trick:
+
+	https://github.com/fluffos/fluffos
+
+Please note, most of the URLs mentioned in this repository
+no longer exist: please use archive.org from around year
+1998 to access the referenced content. Also, the e-mail
+addresses no longer work. For contacting the original
+development team, you can try namhas at gmail . com.
+
 What is Majik 3, this mud library?
 ----------------------------------
 
