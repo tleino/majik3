@@ -1,0 +1,37 @@
+// DATE        : Sun Dec 28 00:40:44 1997
+// DESCRIPTION : A generic room object created using LPC redit 1.2
+// CODER       : shinael
+
+#include "../path.h"
+
+inherit ROOM;
+
+create_room ()
+{
+  set_short ("Entrance hall");
+  set_long (
+    "You're standing in a beautifully decorated entrance hall of Qu"
+  + "e-Moran, the treepalace of the lord and lady of this realm. W"
+  + "alls are painted full of intricate flower and leaf patterns a"
+  + "nd the floor is covered with a soft green mosslike carpet. St"
+  + "range green crystal is embedded on the ceiling. It bathes the"
+  + " room in a soft green light. A sturdy oakdoor leads east and "
+  + "two smaller doorways lead to north and south. Huge doubledoor"
+  + "s lead west.");
+
+  add_exit ("south", ROOM_PATH + "questa2.c");
+  add_exit ("east", ROOM_PATH + "queswo.c");
+  add_exit ("north", ROOM_PATH + "questa1.c");
+  add_exit ("west", ROOM_PATH + "quegat.c");
+
+  set_light (1);
+
+}
+
+// You should REMOVE all lines below this line if you are adding special
+// stuff to this file by hand. Otherwise scary things can happen.
+
+query_redit ()
+{
+  return 12;
+}

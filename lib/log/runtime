@@ -1,0 +1,9 @@
+--
+** Bad argument 1 to call_other() Expected: string or array or object Got: 0. 
+## /world/hilltop/rooms/room1 inherit/base/room.c inherit/base/room.c:115
+--
+** Bad argument 1 to call_other() Expected: string or array or object Got: 0. 
+## /world/hilltop/rooms/room1 inherit/base/room.c inherit/base/room.c:115
+--
+** Bad argument 1 to call_other() Expected: string or array or object Got: 0. 
+## /world/hilltop/rooms/room1 inherit/base/room.c inherit/base/room.c:115

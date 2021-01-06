@@ -1,0 +1,77 @@
+#/secure/player.c
+name "namhas"
+aliases ({"elf","man",})
+location_map (["neck":({16,16,1,1,15,1,"head",}),"ear":({5,5,1,1,5,1,"head",}),"head":({42,42,1,1,40,0,"",}),"foot":({26,26,1,1,25,1,"ankle",}),"ankle":({21,21,1,1,20,1,"shin",}),"shin":({37,37,1,1,35,1,"knee",}),"knee":({32,32,1,1,30,1,"thigh",}),"thigh":({48,48,1,1,45,1,"hip",}),"hip":({32,32,1,1,30,0,"stomach",}),"stomach":({48,48,1,1,45,0,"chest",}),"finger":({5,5,1,1,5,1,"hand",}),"hand":({21,21,1,1,20,1,"wrist",}),"wrist":({16,16,1,1,15,1,"forearm",}),"forearm":({26,26,1,1,25,1,"elbow",}),"elbow":({21,21,1,1,20,1,"upper arm",}),"upper arm":({26,26,1,1,25,1,"shoulder",}),"shoulder":({26,26,1,1,25,1,"chest",}),"chest":({53,53,1,1,50,0,"neck",}),])
+bodytype "humanoid"
+maneuver_name "brawlers_punch"
+skillmap (["martial_arts_hard":({15,0,"martial_arts",({"str",30,"agi",40,"siz",10,"dex",10,"pow",10,}),"node",}),"religious":({15,0,"magical",({"pow",30,"int",20,"wis",40,"dex",10,}),"node",}),"religious_good":({15,0,"religious",({"pow",30,"int",20,"wis",40,"dex",10,}),"node",}),"lay_hands":({10,0,"clerical_healing",({"wis",40,"pow",20,"int",10,"cha",30,}),"magical",}),"movement":({25,0,"skill_root",({"agi",100,"str",30,"siz",-30,}),"node",}),"martial_arts":({20,0,"unarmed_combat",({"str",40,"agi",50,"siz",10,}),"node",}),"magical":({15,0,"skill_root",({"pow",40,"int",30,"wis",30,}),"node",}),"language":({40,0,"communication",({"int",25,"wis",25,"pow",25,"cha",25,}),"node",}),"unarmed_combat":({20,0,"combat",({"str",30,"agi",40,"siz",30,}),"node",}),"communication":({50,0,"social",({"int",30,"wis",30,"pow",20,"cha",20,}),"node",}),"social":({60,0,"skill_root",({"cha",50,"int",25,"pow",25,}),"node",}),"brawlers_punch":({15,0,"martial_arts_hard",({"str",40,"siz",30,"agi",30,}),"maneuver",}),"martial_arts_parry":({15,0,"martial_arts",({"str",40,"dex",10,"siz",10,"agi",40,}),"movement",}),"clerical_holy":({15,0,"religious_good",({"pow",35,"int",15,"wis",35,"dex",15,}),"node",}),"martial_arts_attack":({15,0,"martial_arts",({"str",40,"dex",10,"siz",10,"agi",40,}),"movement",}),"sartog":({80,0,"language",({"cha",10,"int",40,"wis",50,}),"social",}),"combat":({15,0,"movement",({"str",40,"agi",40,"siz",20,}),"node",}),"clerical_healing":({15,0,"clerical_holy",({"pow",35,"int",15,"wis",40,"dex",10,}),"node",}),"dodge":({10,0,"unarmed_combat",({"agi",100,}),"movement",}),"alande":({100,0,"language",({"cha",10,"int",40,"wis",50,}),"social",}),"skill_root":({50,0,"",({"int",10,"agi",10,"con",10,"cha",10,"siz",10,"wis",10,"pow",10,"str",10,"dex",10,}),"node",}),])
+spells ([])
+race "elf"
+subrace "tanir"
+gender 1
+hp 107
+sp 132
+ep 117
+min_sight 1
+max_sight 3
+age 31718448
+max_age 146764800
+beat 15
+current_stats ({8,13,13,12,13,12,14,13,10,9,})
+maximum_stats ({28,45,45,42,45,42,49,45,35,31,})
+grid_xy ({2,1,})
+position 7
+ms ({"arrives","leaves","arrives in a puff of smoke","leaves in a puff of smoke",})
+current_language "sartog"
+naked_damage -3
+naked_defense 3
+naked_fatique 4
+naked_offense 3
+naked_protection -6
+naked_speed 3
+height 188
+weight 70656
+typo 4
+cmds 24
+term 2
+quests ([])
+armour_slots ({({"head","","head",0,0,0,({0,0,0,0,0,0,0,0,0,0,0,}),}),({"ear","right","head",0,0,0,({0,0,0,0,0,0,0,0,0,0,0,}),}),({"ear","left","head",0,0,0,({0,0,0,0,0,0,0,0,0,0,0,}),}),({"neck","","head",0,0,0,({0,0,0,0,0,0,0,0,0,0,0,}),}),({"cloak","","torso",0,0,0,({0,0,0,0,0,0,0,0,0,0,0,}),}),({"torso","","torso",0,0,0,({0,0,0,0,0,0,0,0,0,0,0,}),}),({"bracer","right","right arm",0,0,0,({0,0,0,0,0,0,0,0,0,0,0,}),}),({"bracer","left","left arm",0,0,0,({0,0,0,0,0,0,0,0,0,0,0,}),}),({"hand","right","right arm",0,0,0,({0,0,0,0,0,0,0,0,0,0,0,}),}),({"hand","left","left arm",0,0,0,({0,0,0,0,0,0,0,0,0,0,0,}),}),({"finger","right","right arm",0,0,0,({0,0,0,0,0,0,0,0,0,0,0,}),}),({"finger","left","left arm",0,0,0,({0,0,0,0,0,0,0,0,0,0,0,}),}),({"waist","","torso",0,0,0,({0,0,0,0,0,0,0,0,0,0,0,}),}),({"shin","right","right leg",0,0,0,({0,0,0,0,0,0,0,0,0,0,0,}),}),({"shin","left","left leg",0,0,0,({0,0,0,0,0,0,0,0,0,0,0,}),}),({"foot","right","right leg",0,0,0,({0,0,0,0,0,0,0,0,0,0,0,}),}),({"foot","left","left leg",0,0,0,({0,0,0,0,0,0,0,0,0,0,0,}),}),({"held","left hand","left arm",0,0,0,({0,0,0,0,0,0,0,0,0,0,0,}),}),({"held","right hand","right arm",0,0,0,({0,0,0,0,0,0,0,0,0,0,0,}),}),})
+slot_aliases (["arms":({"arm","arm",}),"legs":({"leg","leg",}),"hands":({"hand","hand",}),"arm":({"bracer","hand",}),"feet":({"foot","foot",}),"leg":({"shin","foot",}),"ears":({"ear","ear",}),"full body":({"head","torso","arms","legs","waist",}),"upper body":({"head","torso","arms","waist",}),])
+truename_map ([])
+explore "\""
+explore_count 1
+clpp_aliases ([])
+clpp_cmds ([])
+guilds ([])
+guild_titles ([])
+known ({})
+password "OsSfDjhPUvaUA"
+email "namhas@majik.netti.fi"
+start "/world/welf/rooms/temple"
+real_name "Tommi Leino"
+title "adventurer"
+last_host "127.0.0.1"
+eyetype ""
+eyecolor "purple"
+complexion "normal"
+hairtype "slightly curly"
+haircolor "golden blonde"
+father ({0,"Iem","a shopkeeper",})
+mother ({0,"Xuvau","a druid",})
+thirst 4000
+hunger 9000
+true_age 87
+save_age 33240748
+creation_date 935233933
+creation_time 33240701
+last_date 935233933
+version 20
+hairlength 97
+rows 24
+columns 80
+kills ([])
+channels (["announce":1,"ooc":1,])
+religions ([])
+saved_items ([])
+kexp ([])
+security 100

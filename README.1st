@@ -1,0 +1,117 @@
+What is Majik 3, this mud library?
+----------------------------------
+
+Majik 3 is the Majik Project's third incarnation which was up and
+running within years 1997 and 1998. The purpose of Majik 3 and the
+whole Majik project has always been to provide an actual, working
+roleplaying enviroment that would be completely player-controlled
+and self-sustaining, without the need of outside administration and
+control. Majik 3 was a third try. It would have been a success as a
+MUD, but we saw that a text-based model consisting of rooms instead
+of grids was inadequate for our purposes. This copy of Majik 3 is
+taken from a backup just before a big conversion to make the MUD
+playable using telnet but would be a roguelike, a gridmap based
+game anyways. The date of the backup is January or February, 1998
+and the state of Majik at the time was alpha testing, not playable
+at all, except you could grow carrots, make money and do some
+exploring. See http://majik.netti.fi/majik3.html for an old web page
+made for Majik 3 when it was up and running and still maintained by
+Majik Development Team. There you'll find for example, a world map.
+
+Why did you release the source code?
+------------------------------------
+
+We saw it more fun to release the source code than leaving it to stay
+on our shelf without use. We hope that this would make Majik's ideas
+and history more widely known and to give many MUD admins something
+to play with and for some, possibly a base where to build a game on. We
+would really like to see that our code would be useful for someone when
+it is no longer of any use for us. It would be great to see Majik 3
+up and running somewhere once again with active coders trying to make
+it playable. You are allowed to do whatever you wish with the source,
+this is our contribution to the Open Source community.
+
+The Majik Development Team is now concentrating on making Majik's fifth
+incarnation, the Majik 3D project, an online role-playing environment
+using modern 3D-technology and thus doesn't have time to maintain its
+predecessors anymore. If you want to find more about our current project,
+or even join the project, you should see the webpage: http://majik.netti.fi,
+you could also send some mail to majik@majik.netti.fi and tell us if you
+are using parts of this pile of source code or even building a MUD on top
+of it. We would really like to hear if our previous work is still useful
+for someone.
+
+So how to get started then?
+---------------------------
+
+First you need to compile a mud driver. The library is made for MudOS
+but should be possible to convert to any other lpmud library, but it
+would need work, a lot of work. To get a suitable MudOS driver you do
+the following if /majik is the directory where you keep your copy of
+Majik 3 and v22.1b22 is the current beta version of MudOS.
+
+  $ cd /tmp
+  $ ftp ftp.aragorn.uio.no
+  ftp> cd pub/LPC/servers/MudOS/
+  ftp> get beta.tar.gz
+  ftp> quit
+  $ tar zxf beta.tar.gz
+  $ cd v22.1b22/
+  $ cp /majik/local_options .
+  $ ./build.MudOS
+  $ make
+  $ strip driver
+  $ cp driver /majik/bin/
+  $ rm -rf /tmp/v22.1b22
+  $ cd /majik
+  
+At this point you need to edit "majik3.conf" file and replace the lines
+"mudlib directory" and "binary directory" with a correct path and then:
+
+  $ bin/driver majik3.conf &
+
+The driver should be now up and running and you should be able to telnet
+localhost 7600, if you didn't change the port in the configuration file.
+It this didn't work you should double-check everything and if still you
+have trouble and no clue, send mail to the Majik Development Team.
+
+Admin character
+--------------
+
+To make an admin character for you, you need to make a mortal character
+first, then log out and edit file /data/player/<first letter>/<your name>.o
+and add a line "security 100" at the end of the file and then make a home
+directory. For example if you name would be "Admin" you would do the
+following after you have made a mortal character and logged it out using
+"quit" command.
+
+  $ echo >>/lib/data/player/a/admin.o "security 100"
+  $ mkdir lib/home/admin
+
+This same applies to all the other characters, except that for the others
+you might not want to give security level 100, just start from 1 and give
+more levels when you see it appropriate.
+
+Extending the world
+-------------------
+
+To build new areas you might want to read all doc/lpc-tutorial files to
+learn LPC programming and then read as many doc/majik files as you dare,
+and files from doc/majik/handbook too. Build yourself a workroom and
+then you might want to try "redit" command also, a nice room editor
+which you can use actually for most of the tasks. Whether or not continuing
+using the redit (there is also iedit, the item editor), you'll need to
+make a new directory to /world and build your area there. Then just link
+it to world using an exit from some already existing area and/or add a
+link to your area directly from worldmap using a scenic location. Go
+there using goto command for example: "goto /world/y200x200" and modify
+the environment to your taste using "designate" command, you can see
+the symbols using "describe" command and then finally transform one grid
+to scenic location "?" and save the changes, "designate save". Then cd
+to /world/virtual/ and list your area in AREAS file and copy some existing
+y<n>x<n>.c to a new name with your coordinates (y200x200.c for example)
+and edit it. So simple. If problems, the address is below.
+
+-- 
+Majik Development Team
+majik@majik.netti.fi http://majik.netti.fi

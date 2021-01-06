@@ -1,0 +1,40 @@
+// DATE        : Sun Dec 28 02:06:02 1997
+// DESCRIPTION : A generic room object created using LPC redit 1.2
+// CODER       : shinael
+
+#include "../path.h"
+
+inherit ROOM;
+
+create_room ()
+{
+  set_short ("Que-Moran's library");
+  set_long (
+    "You're standing in the library of Que-Moran, the treepalace. T"
+  + "he room is almost as spacious as the swanhall. Huge bookcases"
+  + " on the walls are each  filled with thousands of books. A gre"
+  + "at round table has been placed at the center of the floor and"
+  + " around it several comfortable looking chairs. A glowing gree"
+  + "n crystal at the center of the table illuminates the whole gr"
+  + "eat library. The east wall and the ceiling are both purely ma"
+  + "de of glasswindows providing excellent view to the sky and th"
+  + "e surrounding forest in east. Short stairs lead west to an ob"
+  + "servatory. There are small doorways on the north and south wal"
+  + "l.");
+
+  add_exit ("south", ROOM_PATH + "questa10.c");
+  add_exit ("north", ROOM_PATH + "questa9.c");
+  add_exit ("west", ROOM_PATH + "queobs.c");
+
+  set_outdoors (1);
+  set_light (1);
+
+}
+
+// You should REMOVE all lines below this line if you are adding special
+// stuff to this file by hand. Otherwise scary things can happen.
+
+query_redit ()
+{
+  return 12;
+}
