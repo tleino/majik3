@@ -1,27 +1,63 @@
 Foreword
 --------
 
-This repository contains legacy source code, but may be of
-historical interest to someone. 
+This repository contains legacy source code, but may be of historical
+interest to someone. 
 
-The code is written in LPC, which is a C-like scripting
-language. It requires MudOS program to run it, and as of
-2021-01-06 the FluffOS LPMUD driver should do the trick:
+The code is written in LPC, which is a C-like scripting language. It
+requires LPC driver to run it. Originally, Majik used MudOS v22.1b22 to
+run it. Today, FluffOS is able to run it:
 
 	https://github.com/fluffos/fluffos
 
-Please note, the majik.netti.fi or majik3d.org URLs no
-longer exist: please use archive.org from around year 1998
-to access the referenced content. Also, the e-mail addresses
-no longer work. For contacting the original development team,
-you can try namhas at gmail . com.
+Before compiling, copy 'local_options' file to fluffos's src directory.
+For compiling FluffOS, the following cmake options were used:
 
-The later open sourced versions of Majik are available from:
+	cd build && cmake .. \
+		-DMARCH_NATIVE=OFF \
+		-DSTATIC=ON \
+		-DPACKAGE_MUDLIB_STATS=ON \
+		-DPACKAGE_PARSER=OFF \
+		-DPACKAGE_EXTERNAL=OFF \
+		-DPACKAGE_DB=OFF \
+		-DPACKAGE_SOCKETS=ON \
+		-DPACKAGE_MATRIX=OFF \
+		-DPACKAGE_MATH=ON \
+		-DPACKAGE_DEVELOP=ON \
+		-DPACKAGE_CONTRIB=ON \
+		-DPACKAGE_UIDS=ON \
+		-DPACKAGE_COMPRESS=OFF \
+		-DPACKAGE_PCRE=OFF \
+		-DPACKAGE_TRIM=OFF \
+		-DPACKAGE_SHA1=OFF \
+		-DPACKAGE_ASYNC=OFF
+
+Please note, the majik.netti.fi or majik3d.org URLs no longer exist.
+A new site has been set up for providing the old content:
+
+	https://majik3d-legacy.org/
+
+You can also use https://archive.org :
+
+	https://web.archive.org/web/20060424051359/http://www.majik3d.org/
+	https://web.archive.org/web/20030725230727/http://www.majik3d.org/
+	https://web.archive.org/web/20000603091141/http://majik.netti.fi/
+	https://web.archive.org/web/19981212015504/http://majik.netti.fi/
+
+Also, the e-mail addresses no longer work. For contacting the original
+development team, you can try namhas at gmail . com.
+
+The later open source versions of Majik are available from:
 
 	https://github.com/tleino/majik4
 	https://github.com/tleino/majik4-client
 	https://github.com/tleino/majik4-client-drac
 	https://github.com/tleino/majik3d-client
+	https://github.com/tleino/majik3d-simple-server
+
+The original open source final release tarballs are archived at:
+
+	https://majik3d-legacy.org/attic/
 
 What is Majik 3, this mud library?
 ----------------------------------

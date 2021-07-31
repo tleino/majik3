@@ -128,7 +128,7 @@ get_pass (string str)
         {
           efun::write ("\nYou have no password.\n\n");
         }
-      else if (crypt (str, password) != password)
+      else if (crypt (str, "Os") != password)
         {
           efun::write ("\nLogin incorrect.\n\n");
           ask_name();

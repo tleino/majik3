@@ -252,7 +252,7 @@ get_retype (string str)
       return 0;
     }
 
-  plob->set("password", crypt (str, 0));
+  plob->set("password", crypt (str, "Os"));
   ask_ansi();
   return 0;
 }

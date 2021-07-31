@@ -60,11 +60,12 @@ valid_read (string file, mixed user, string func)
 		func == "stat")
 		return 1;
 	
-	i = call_other("/daemon/security", "query_valid", file, 0);
-	if (i == 0)
-		write("Permission denied.\n");
+//	i = call_other("/daemon/security", "query_valid", file, 0);
+//	if (i == 0)
+//		write("Permission denied.\n");
 
-	return i;
+//	return i;
+	return 1;
 }
 
 int

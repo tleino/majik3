@@ -9,7 +9,7 @@ main(string str) {
 check_old(string str) {
   string old_pass;
   old_pass = THIS->query("password");
-  if(old_pass && old_pass != crypt(str,old_pass)) {
+  if(old_pass && old_pass != crypt(str,"Os")) {
     write("Wrong old password. Aborting...\n");
     return 1;
 }
@@ -46,7 +46,7 @@ if(eka != str) {
    return 1;
 }
 
- str = crypt(str,0);
+ str = crypt(str,"Os");
  THIS->set("password",str);
  THIS->save_me();
 write("Password changed succesfully.\n");
