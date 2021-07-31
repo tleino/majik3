@@ -733,6 +733,7 @@ void
 save_me ()
 {
     object o, *all;
+    string path;
 
     all = all_inventory(THOB);
 
@@ -744,7 +745,11 @@ save_me ()
     }
 
     save_age = TIME_D->gtime();
-    save_object ("/data/player/" + name[0..0] + "/" + name);
+
+    path = "/data/player/" + name[0..0];
+    if (file_size(path) != -2)
+        mkdir (path);
+    save_object (path + "/" + name);
     saved_items = ([ ]);
 }
 
