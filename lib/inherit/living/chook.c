@@ -180,14 +180,23 @@ commandHook (string str)
     }
     else {
 	typo++;
-	if (typo == 100 || typo == 1000 || typo == 10000 || typo == 100000) {
-	    write ("Congratulations! You just did your "+typo+"th typo!\n\a");
-	    return 1;
-	}
-	if (typo == 1) {
-	    write ("Congratulations! You just did your first typo!\n\a");
-	    return 1;
-	}
+
+        /*
+         * This block of code supports an useless fancy feature that counts
+         * the number of typos. However, this causes a "famous" bug where
+         * the first command written during the character generation counts
+         * as a typo. This add_action handler needs to return 0 if we're
+         * unable to find a command because otherwise the environment is not
+         * queried for additional commands.
+         */
+//	if (typo == 100 || typo == 1000 || typo == 10000 || typo == 100000) {
+//	    write ("Congratulations! You just did your "+typo+"th typo!\n\a");
+//	    return 1;
+//	}
+//	if (typo == 1) {
+//	    write ("Congratulations! You just did your first typo!\n\a");
+//	    return 1;
+//	}
 	return 0;
     }
 }
