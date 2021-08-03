@@ -1,0 +1,10 @@
+This Web client is specifically written for Majik 3 MUD for supporting
+the special color codes used by the game engine. It is also just as
+barebones as needs to be for the game.
+
+For setting up WebSockets, you could use websocketd or use FluffOS's
+native WebSocket support.
+
+	https://github.com/joewalnes/websocketd
+
+The wss:// or ws:// can be configured from webclient.js .
