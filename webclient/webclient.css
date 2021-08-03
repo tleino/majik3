@@ -1,0 +1,141 @@
+body {
+	background: black;
+	color: white;
+	font-size: large;
+	font-family: monospace;
+	margin: auto;
+	padding-left: 0.5em;
+	padding-right: 0.5em;
+	padding-bottom: 0.5em;
+	padding-top: 0.5em;
+}
+
+a:link {
+	color: white;
+}
+
+a:visited {
+	color: white;
+}
+
+a:hover {
+	color: white;
+}
+
+a:active {
+	color: white;
+}
+
+.content {
+	white-space: pre-wrap;
+	padding: 0.5em;
+	border-radius: 0.5em;
+	text-align: left;
+	font-family: monospace;
+}
+.wsline:last-of-type {
+	padding-bottom: 0.5em;
+}
+.userinputdiv {
+	margin-top: 0.25em;
+	margin-bottom: 0.25em;
+}
+.userinput {
+	background: #555555;
+	color: white;
+	margin-top: 0.25em;
+	margin-bottom: 0.25em;
+	padding: 0.25em;
+	border-radius: 0.25em;
+}
+#restartbtn {
+	background: #555555;
+	color: white;
+	margin-top: 0.25em;
+	margin-bottom: 0.25em;
+	padding: 0.25em;
+	border-radius: 0.25em;
+}
+.invis {
+	visibility: hidden;
+}
+#prompt {
+	width: 100%;
+	font-family: monospace;
+	font-size: large;
+	background: #555555;
+	caret-shape: block;
+	color: white;
+}
+span.c0 {
+	color: #eeeeee;
+}
+span.c1 {
+	color: #ffffff;
+	font-weight: bold;
+}
+span.bold {
+	font-weight: bold;
+}
+span.c6 {
+	color: #000000;
+}
+span.cl {
+	color: #000000;
+}
+span.cr {
+	color: #ee0000;
+}
+span.cg {
+	color: #00dd00;
+}
+span.cy {
+	color: #eedd00;
+}
+span.cb {
+	color: #0000ed;
+}
+span.bb {
+	background: #0000ed;
+}
+span.cp {
+	color: #ee00ee;
+}
+span.cc {
+	color: #00ef00;
+}
+span.cw {
+	color: #efefef;
+}
+span.cll {
+	color: #333333;
+	font-weight: bold;
+}
+span.crr {
+	color: #ff0000;
+	font-weight: bold;
+}
+span.cgg {
+	color: #00ff00;
+	font-weight: bold;
+}
+span.cyy {
+	color: #ffff00;
+	font-weight: bold;
+}
+span.cbb {
+	color: #0000ff;
+	font-weight: bold;
+}
+span.cpp {
+	color: #800080;
+	font-weight: bold;
+}
+span.ccc {
+	color: #00ff00;
+	font-weight: bold;
+}
+span.cww {
+	color: #ffffff;
+	font-weight: bold;
+}

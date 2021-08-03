@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Majik 3 Web Client</title>
+		<meta
+		 name="apple-mobile-web-app-capable"
+		 content="yes"/>
+		<meta
+		 name="apple-mobile-web-app-status-bar-style"
+		 content="black"/>
+		<meta
+		 name="viewport"
+		 content="width=device,width, initial-scale=1.0"/>
+		<meta
+		 charset="utf-8"/>
+		<meta
+		 name="author"
+		 content="Tommi Leino"/>
+		<meta
+		 name="copyright"
+		 content="Tommi Leino"/>
+		<link rel="stylesheet" href="webclient.css"/>
+		<script src="webclient.js" type="text/javascript"></script>
+	</head>
+	<body
+	 id="body"
+	 onload="init()"
+	 onclick="stealfocus()"
+	 onkeydown="arrowdown(event)">
+		<div
+		 class="content"
+		 id="content"
+		 onclick="stealfocus()">
+			<input id="prompt"
+			 style="visibility: hidden"
+			 autocomplete="off"
+			 autocorrect="off"
+			 autocapitalize="none"
+			 spellcheck="false"
+			 type="text"
+			 onkeydown="enterclicked(event)"/>
+		</div>
+	</body>
+</html>
