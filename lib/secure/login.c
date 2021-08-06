@@ -89,7 +89,38 @@ get_name (string str)
 {
   str = lower_case (str);
 
-  if (str == "new")
+
+  if (str == "guest")
+    str = ({ "guest1", "guest2", "guest3" })[random(3)];
+
+  if (str == "guest1")
+    {
+      object o = new ("/secure/player");
+      efun::exec (o, THOB);
+      o->move ("/world/misc/race");
+      o->setup ("/daemon/guest"->next(), 1);
+      destruct (THOB);
+      return;
+    }
+  else if (str == "guest2")
+    {
+      object o = new ("/secure/player");
+      efun::exec (o, THOB);
+      o->move ("/world/misc/race");
+      o->setup ("/daemon/guest"->next(), 2);
+      destruct (THOB);
+      return;
+    }
+  else if (str == "guest3")
+    {
+      object o = new ("/secure/player");
+      efun::exec (o, THOB);
+      o->move ("/world/misc/race");
+      o->setup ("/daemon/guest"->next(), 3);
+      destruct (THOB);
+      return;
+    }
+  else if (str == "new")
     {
       efun::write (read_file("/data/config/newuser"));
       newuser();
@@ -97,8 +128,11 @@ get_name (string str)
     }
   else if (!test_user (str))
     {
-      efun::write ("No character with that name exists.\n");
-      efun::write ("To create new character please login as 'new'.\n\n");
+      efun::write ("No character with that name exists.\n\n");
+      efun::write ("To visit the game:\n");
+      efun::write ("    please login as 'guest1', 'guest2' or 'guest3'.\n\n");
+      efun::write ("To create a new character:\n");
+      efun::write ("    please login as 'new'.\n\n");
       tries++;
     }
   else

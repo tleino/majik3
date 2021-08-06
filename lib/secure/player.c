@@ -79,6 +79,8 @@ int beardlength;
 int rows = 24;
 int columns = 80;
 
+int guest = 0;
+
 private int security;
 
 mapping kills = ([ ]);
@@ -375,15 +377,25 @@ net_dead ()
 {
     object ob, *arr;
 
+    arr = all_inventory(environment(THOB));
+    arr += ({ THOB });
+
+    if (guest > 0) {
+        message ("announce",
+          "Info: ^c1" + capitalize(name) + "^c0 disappears.\n",
+          users(), arr);
+
+        o_room (THOB->query_cap_name() + " disappears.");
+        move ("/world/misc/void");
+        return;
+    }
+
     ob = clone_object ("/obj/statue");
     ob->set_player_name (name);
     ob->set_query_race (race);
     ob->move (environment(THOB));
 
     start = file_name(environment(THOB));
-
-    arr = all_inventory(environment(THOB));
-    arr += ({ THOB });
 
     message ("announce",
       "Info: ^c1" + capitalize(name) + "^c0 turns into a statue.\n",
@@ -498,23 +510,50 @@ write_prompt ()
 // CODER       : namhas
 
 varargs void
-setup (string str)
+setup (string str, int _guest)
 {
     int diff, oid;
     string tmp, base, *k;
     object ob;
+    int newplr = 0;
 
-    if (!restore_object ("/data/player/" + str[0..0] + "/" + str))
+    if (_guest == 0 && !restore_object ("/data/player/" + str[0..0] + "/" + str))
 	o_fatal ("Could not restore object from save file.\n");
 
     if (file_size("/data/config/news") > 0)
       cat ("/data/config/news");
 
+    if (_guest > 0 || !name)
+		name = str;
+
     if (name)
 		set_living_name (name);
 
-    if (!name)
-		name = str;
+    if (_guest > 0) {
+        string *humans = ({
+            "ayura", "innohu", "moraki", "shaolu", "thari", "yangir"
+            });
+        string *elves = ({
+            "tanir", "dyanir", "aindar", "lindor" });
+        string *others = ({
+            "yamar", "tilan", "troll", "orc", "dwarf", "gnome", "halfling"
+        });
+
+        guest = _guest;
+        version = 20;
+	THIS->set("term", 5);
+        THIS->set("gender", 1 + random(2));
+        efun::write ("You are ^cG" + name + "^c0.\n\n");
+
+        if (guest == 1)
+            "/world/misc/race"->do_select(elves[random(sizeof(elves))]);
+        else if (guest == 2)
+            "/world/misc/race"->do_select(humans[random(sizeof(humans))]);
+        else if (guest == 3)
+            "/world/misc/race"->do_select(others[random(sizeof(others))]);
+
+        start = file_name(ENV(THOB));
+    }
 
     if (file_size("/log/"+name+".rep") > 1)
 		efun::write(read_file("/log/"+name+".rep"));
@@ -528,7 +567,7 @@ setup (string str)
     last_date = time();
     last_host = query_ip_name();
 
-    if (start)
+    if (start && _guest == 0)
     {
 	switch (diff/3*5)
 	{
@@ -587,7 +626,7 @@ setup (string str)
 	"/world/misc/race"->init(THOB);
     }
 
-    if (start)
+    if (start && _guest == 0)
     {
 	message ("9", "Info: ^c1" + THOB->query_cap_name() + "^c0 wakes up.\n",
 	  users(), all_inventory(environment(THOB)));
@@ -595,9 +634,11 @@ setup (string str)
     }
     else
     {
+        newplr = 1;
 	message ("9", "Info: ^c1" + THOB->query_cap_name() + "^c0 is a new player.\n",
 	  users(), all_inventory(environment(THOB)));
-	o_room (THOB->query_cap_name() + " wakes up and seems to be rather confused.");
+        if (_guest == 0)
+	    o_room (THOB->query_cap_name() + " wakes up and seems to be rather confused.");
     }
 
     if (security >= SEC1)
@@ -638,6 +679,9 @@ setup (string str)
 
     call_out ("do_auth", 0);
     add_action ("commandHook", "", 1);
+
+    if (newplr == 1)
+        efun::write ("\nType '^cGhelp begin^c0' to get started.\n");
 }
 
 //DESCRIPTION : set spouse for player marriages
@@ -734,6 +778,9 @@ save_me ()
 {
     object o, *all;
     string path;
+
+    if (guest > 0)
+        return;
 
     all = all_inventory(THOB);
 
