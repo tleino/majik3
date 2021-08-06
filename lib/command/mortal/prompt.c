@@ -23,7 +23,7 @@ main (string str)
       write ("  <rooms>   - explore count\n");
       write ("  <time>    - current time\n");
       write ("  <cwd>     - current working directory (wiz only)\n\n");
-      write (wrap("You can also \"prompt clear\" to reset defaults. Colors described in \"help colors\" are also accepted.\n"));
+      write (wrap("You can also \"prompt clear\" to reset defaults. Colors described in \"help colors\" are also accepted. To turn the prompt totally off, try \"prompt off\".\n"));
       return 1;
     }
   if (str == "clear")

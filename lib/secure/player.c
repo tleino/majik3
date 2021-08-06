@@ -456,6 +456,9 @@ write_prompt ()
     string str;
     int max_ep, max_sp, max_hp;
 
+    if (prompt == "off")
+        return;
+
     if (prompt) {
 	str = prompt;
 
