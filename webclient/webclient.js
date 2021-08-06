@@ -3,7 +3,7 @@
  * (c) 2021, Tommi Leino.
  */
 
-const wshost = "wss://majik3d-legacy.org:4003";
+var wshost = "wss://majik3d-legacy.org:4003";
 
 var lineno = 0;
 var topelem = null;
@@ -16,15 +16,19 @@ var selecting = false;
 
 function openws()
 {
-	socket = new WebSocket(wshost);
+	wshost_tag = document.getElementById("wshost");
+	if (wshost_tag)
+		wshost = wshost_tag.value;
 
 	addline("Trying " + wshost + "...");
+	socket = new WebSocket(wshost);
 
 	socket.onopen = function(e) {
 		addline("Connected to " + wshost + ".");
 		addline("");
 		prompt.style.visibility = "visible";
 		prompt.scrollIntoView();
+		socket.send("webclient");
 	}
 
 	socket.onmessage = function(e) {
