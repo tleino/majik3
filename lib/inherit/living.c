@@ -80,6 +80,8 @@ int is_npc;              // flag to determine is the living object npc or pc
 
 int brief;               // for dazzt
 
+int nomap;
+
 int *current_stats;      // array of current stats
 int *maximum_stats;      // array of maximum stats
 
@@ -114,6 +116,12 @@ int weight;
 // function prototypes (no applies) :
 
 int move_player (mixed, string);
+
+int
+query_no_map ()
+{
+  return nomap;
+}
 
 int
 query_idle_time ()

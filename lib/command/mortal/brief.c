@@ -29,7 +29,7 @@ query_help()
 
 query_see_also()
 {
-  return "look(1), blook(1)";
+  return "look(1), blook(1), nomap(1)";
 }
 
 query_position ()

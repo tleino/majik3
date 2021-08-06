@@ -7,6 +7,11 @@
 #undef THIS
 #define THIS previous_object()
 
+int sort_by_length (string a, string b)
+{
+    return strlen(a) < strlen(b);
+}
+
 main (string str, object this)
 {
     string targstr, meps, outbuf = "", *buf, *desc, *out, *dir, desci = "";
@@ -47,7 +52,8 @@ main (string str, object this)
 
     if (!str)
     {
-	if (env->long() && !virtualp(env) && !env->query_no_wrap())
+	if (env->long() && !virtualp(env) && !env->query_no_wrap() &&
+            !THIS->query_no_map())
 	{
 
 	    buf = allocate(6);
@@ -165,15 +171,58 @@ main (string str, object this)
 
 	}
 	else {
+            string *k;
+            string *items;
+            string *allitems;
+            string *obvious;
+            int i;
+            string tmp;
+
 	    if (this->query_security())
 		outbuf += "File name: "+file_name(env)+""
 		+(virtualp(env) ? " (virtual)" : "")+""
 		+(env->query_no_wrap() ? " (no wrap)" : "")+"\n";
 
-            if (!env->query_no_wrap())
+            if (!env->query_no_wrap() && !THIS->query_no_map())
               outbuf += "           ^cG" + env->query_short() + ".^c0\n";
+            else
+              outbuf += "^cG" + env->query_short() + ".^c0\n";
 
-	    desci = env->long();
+            k = keys(env->query_exits());
+            k = sort_array(k, (: sort_by_length :));
+
+            items = keys(env->query_items());
+            allitems = ({ });
+            for (i = 0; i < sizeof(items); i++) {
+                allitems += explode(items[i], " ");
+            }
+            items = sort_array(allitems, (: sort_by_length :));
+
+            desci = env->query_long();
+            obvious = ({ });
+            for (i = 0; i < sizeof(k); i++) {
+                tmp = replace_string(desci, k[i], "^cY" + k[i] + "^cg");
+                if (tmp != desci)
+                    obvious += ({ k[i] });
+                desci = tmp;
+            }
+
+            for (i = 0; i < sizeof(items); i++) {
+                desci = replace_string(desci, " " + items[i] + " ", " ^cG" + items[i] + "^cg ");
+            }
+
+            desci = desci + env->show_doors() + env->show_blood() +
+              "\n" + WEATHER_D->query_weather(env->query_weather_zone()[0],
+              env->query_weather_zone()[1], env->query_outdoors());
+            
+	    desci = "^cg" + desci + "\n";
+
+            if (this->query_security()) {
+                k -= obvious;
+                for (i = 0; i < sizeof(k); i++) {
+                    efun::write("Non-described exit: " + k[i] + "\n");
+                }
+            }
 	}
 
 	outbuf += desci;
