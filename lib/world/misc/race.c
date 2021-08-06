@@ -1234,8 +1234,14 @@ heights = "average height";
     THIS->set_name(({ THIS->query_true_name(), THIS->query_race(),
       THIS->query_description_gender() }));
 
-    write ("\nPress ENTER to continue: ");
-    input_to ("do_pause");
+    write ("\n");
+//    if (THIS->query("term") != 5) {
+//      write ("\nPress ENTER to continue:\n");
+//      input_to ("do_pause");
+//    } else {
+      do_pause();
+//    }
+
     THIS->do_full_heal();
     return 1;
 }

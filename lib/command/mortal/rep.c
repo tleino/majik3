@@ -9,8 +9,11 @@ int main (string arg) {
         return 0;
       }
 
-    write("Entering 'rep' mode:\n");
-    message ("prompt", "^c1"+arg+"^c0 > ", THIS);
+    write("Entering 'rep' mode -- type 'rep' again to end:\n");
+    if (THIS->query("term") == 5)
+      message ("prompt", "^c1"+arg+"^c0 > \n", THIS);
+    else
+      message ("prompt", "^c1"+arg+"^c0 > ", THIS);
     input_to("repeat_thing", 0, THIS);
     return 1;
 }
@@ -18,7 +21,10 @@ int main (string arg) {
 repeat_thing(string str, object who) {
     if (str != "rep") {
 	THIS->force_us(Cmd+" "+str);
-	message ("prompt", "^c1"+Cmd+"^c0 > ", THIS);
+        if (THIS->query("term") == 5)
+	  message ("prompt", "^c1"+Cmd+"^c0 > \n", THIS);
+        else
+	  message ("prompt", "^c1"+Cmd+"^c0 > ", THIS);
 	input_to("repeat_thing", 0, THIS);
     }
     else

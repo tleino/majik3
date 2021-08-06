@@ -7,11 +7,18 @@ inherit "/inherit/receive";
 
 #define PREV         previous_object()
 #define pline(x)     message ("0", x, THIS);
-#define prompt(x)    message ("4", x, THIS);
 
 int success;
 string pass, name = "null";
 object plob;
+
+void prompt (string x)
+{
+  if (term == 5)
+    message ("4", x + "\n", THIS);
+  else
+    message ("4", x, THIS);
+}
 
 int
 valid_mail (string str)
@@ -80,8 +87,9 @@ valid_name (string str)
   return 1;
 }
 
-do_newuser ()
+do_newuser (int login_real_term)
 {
+  term = login_real_term;
   prompt ("What name will your new character have? ");
   input_to ("ask_newuser");
 }
@@ -157,7 +165,10 @@ get_ansi (string str)
 
   if (lower_case(str)[0] != "n")
     {
-      plob->set ("term", 2);
+      if (THIS->query ("term") == 5)
+        plob->set ("term", 5);
+      else
+        plob->set ("term", 2);
     }
   else
     {
@@ -210,6 +221,7 @@ get_gender(string str)
 
   pline ("Character creation almost done. You can now look around.\n");
   pline ("Please read '^c1help alpha^c0' as soon as you can.\n");
+  plob->set ("term", term);
   plob->save_me();
   destruct (plob);
   plob = new ("/secure/player");

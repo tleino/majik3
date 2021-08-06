@@ -9,7 +9,7 @@
 #define o_error(x)        message (1, "\aError: ^cy" + x + "^c0\n", THOB)
 #define o_fatal(x)        message (2, "\aFatal: ^cR" + x + "^c0\n", THOB)
 #define o_room(x)         message (3, x + "\n", ENV(THOB), THOB)
-#define o_prompt(x)       message (4, x, THOB);
+#define o_prompt(x)       message (4, x + "\n", THOB);
 #define o_you(x)          message (5, "You " + x + "\n", THOB);
 #define o_your(x)         message (6, "Your " + x + "\n", THOB);
 #define o_hear(x)         message (7, "You hear " + x + "\n", THOB);

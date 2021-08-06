@@ -7,6 +7,7 @@ main(string term)
     {
       pline ("usage: term <terminal type>\n");
       pline ("available terminal types are: unknown, vt100, ansi, html, xterm, raw and majik\n");
+      pline ("use 'raw' if you are using the web client\n");
       return 1;
     }
 

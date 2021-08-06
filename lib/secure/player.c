@@ -241,8 +241,8 @@ add_kexp (int i, string race)
 int
 query_rows ()
 {
-  if (rows < 1)
-    return 24;
+  if (rows < 1 || THIS->query("term") == 5)
+    return 100000;
 
   return rows;
 }
@@ -541,9 +541,8 @@ setup (string str, int _guest)
 
         guest = _guest;
         version = 20;
-	THIS->set("term", 5);
         THIS->set("gender", 1 + random(2));
-        efun::write ("You are ^cG" + name + "^c0.\n\n");
+        o_line ("You are ^cG" + name + "^c0.\n");
 
         if (guest == 1)
             "/world/misc/race"->do_select(elves[random(sizeof(elves))]);
@@ -681,7 +680,7 @@ setup (string str, int _guest)
     add_action ("commandHook", "", 1);
 
     if (newplr == 1)
-        efun::write ("\nType '^cGhelp begin^c0' to get started.\n");
+        o_line ("\nType '^cGhelp begin^c0' to get started.");
 }
 
 //DESCRIPTION : set spouse for player marriages

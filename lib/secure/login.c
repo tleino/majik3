@@ -12,6 +12,7 @@ void ask_name ();
 void ask_pass ();
 void get_pass (string);
 void newuser ();
+void logon_welcome ();
 
 int test_user (string);
 
@@ -23,17 +24,22 @@ string login_term = "unknown";
 int login_rows = 24;
 int login_columns = 80;
 int login_real_term = 0;
+int term_type_iterate = 0;
+int use_ask_name_chain = 0;
 
 void terminal_type (string term)
 {
   write_file ("/log/telnet", "login: terminal_type received: "+term+"\n");
-  login_term = term;
+  login_term = lower_case(term);
 
   if (login_term[0..1] == "vt")
     login_real_term = 1;
   else if (login_term[0..4] == "linux" ||
-           login_term[0..3] == "ansi")
+           login_term[0..3] == "ansi" ||
+           login_term[0..4] == "xterm" )
     login_real_term = 2;
+  else if (login_term == "webclient")
+    login_real_term = 5;
 }
 
 void window_size (mixed jotai1, mixed jotai2)
@@ -46,25 +52,79 @@ void window_size (mixed jotai1, mixed jotai2)
 }
 
 void
-logon ()
+logon_welcome ()
 {
+  efun::write ("Terminal type: " + login_term + "\n");
   call_out ("do_timeout", 300);
-  efun::write ("\033[H\033[J" + read_file("/data/config/welcome") + "\n");
+
+  if (login_term == "webclient")
+    efun::write (read_file("/data/config/welcome.webclient") + "\n");
+  else
+    efun::write (read_file("/data/config/welcome") + "\n");
+
+  /*
+   * We need to have a hack here, because the term type determination
+   * logic relies on getting input to get_term_type with input_to(), but
+   * input_to() callbacks cannot be removed and in some cases we get no
+   * input to this callback, so we need to manually force the input to
+   * the ask name chain in these cases.
+   */
+  use_ask_name_chain = 1;
 
   ask_name();
 }
 
 void
+get_term_type (string str)
+{
+  if (use_ask_name_chain) {
+    get_name (str);
+    return;    
+  }
+  terminal_type (str);
+  remove_call_out ("iterate_term_type");
+  logon_welcome();
+}
+
+void
+iterate_term_type ()
+{
+  term_type_iterate++;
+
+  if (login_term == "unknown" && term_type_iterate < 5) {
+    if (term_type_iterate == 1)
+      efun::write ("\rDetermining terminal type...\n");
+    call_out ("iterate_term_type", 1);
+  } else
+    logon_welcome();
+}
+
+void
+logon ()
+{
+  input_to ("get_term_type", 0);
+  call_out ("iterate_term_type", 0);
+
+  write_file ("/log/logins", ctime() + " :: " + " connection\n");
+}
+
+void
 ask_name ()
 {
-  efun::write ("What is your character's name? ");
+  if (login_real_term == 5)
+    efun::write ("What is your character's name?\n");
+  else
+    efun::write ("What is your character's name? ");
   input_to ("get_name", 0);
 }
 
 void
 ask_pass ()
 {
-  efun::write ("Password: ");
+  if (login_real_term == 5)
+    efun::write ("Password:\n");
+  else
+    efun::write ("Password: ");
   input_to ("get_pass", 1);
 }
 
@@ -98,6 +158,7 @@ get_name (string str)
     {
       object o = new ("/secure/player");
       efun::exec (o, THOB);
+      o->set ("term", login_real_term);
       o->move ("/world/misc/race");
       o->setup ("/daemon/guest"->next(), 1);
       destruct (THOB);
@@ -107,6 +168,7 @@ get_name (string str)
     {
       object o = new ("/secure/player");
       efun::exec (o, THOB);
+      o->set ("term", login_real_term);
       o->move ("/world/misc/race");
       o->setup ("/daemon/guest"->next(), 2);
       destruct (THOB);
@@ -116,6 +178,7 @@ get_name (string str)
     {
       object o = new ("/secure/player");
       efun::exec (o, THOB);
+      o->set ("term", login_real_term);
       o->move ("/world/misc/race");
       o->setup ("/daemon/guest"->next(), 3);
       destruct (THOB);
@@ -218,7 +281,7 @@ newuser ()
 
   o = new ("/secure/newuser");
   efun::exec(o, THOB);
-  o->do_newuser ();
+  o->do_newuser (login_real_term);
   destruct (THOB);
 }
 
