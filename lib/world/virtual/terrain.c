@@ -133,7 +133,7 @@ do_describe ()
 	    if (i%2)
 		result += "          ";
 
-            if (THIS->query("term") == 2) {
+            if (THIS->query("term") == 2 || THIS->query("term") == 5) {
 	    result += sprintf ("%s%4s^c0 %29s", terrains[arr[i]][1], arr[i],
 	      terrains[arr[i]][0]);
             }
