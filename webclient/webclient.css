@@ -67,75 +67,113 @@ a:active {
 	caret-shape: block;
 	color: white;
 }
-span.c0 {
-	color: #eeeeee;
+@media screen {
+	span.c0 {
+		color: #eeeeee;
+	}
+	span.c1 {
+		color: #ffffff;
+		font-weight: bold;
+	}
+	span.bold {
+		font-weight: bold;
+	}
+	span.c6 {
+		color: #000000;
+	}
+	span.cl {
+		color: #000000;
+	}
+	span.cr {
+		color: #ee0000;
+	}
+	span.cg {
+		color: #00dd00;
+	}
+	span.cy {
+		color: #eedd00;
+	}
+	span.cb {
+		color: #0000ed;
+	}
+	span.bb {
+		background: #0000ed;
+	}
+	span.cp {
+		color: #ee00ee;
+	}
+	span.cc {
+		color: #00ef00;
+	}
+	span.cw {
+		color: #efefef;
+	}
+	span.cll {
+		color: #333333;
+		font-weight: bold;
+	}
+	span.crr {
+		color: #ff0000;
+		font-weight: bold;
+	}
+	span.cgg {
+		color: #00ff00;
+		font-weight: bold;
+	}
+	span.cyy {
+		color: #ffff00;
+		font-weight: bold;
+	}
+	span.cbb {
+		color: #0000ff;
+		font-weight: bold;
+	}
+	span.cpp {
+		color: #800080;
+		font-weight: bold;
+	}
+	span.ccc {
+		color: #00ff00;
+		font-weight: bold;
+	}
+	span.cww {
+		color: #ffffff;
+		font-weight: bold;
+	}
 }
-span.c1 {
-	color: #ffffff;
-	font-weight: bold;
-}
-span.bold {
-	font-weight: bold;
-}
-span.c6 {
-	color: #000000;
-}
-span.cl {
-	color: #000000;
-}
-span.cr {
-	color: #ee0000;
-}
-span.cg {
-	color: #00dd00;
-}
-span.cy {
-	color: #eedd00;
-}
-span.cb {
-	color: #0000ed;
-}
-span.bb {
-	background: #0000ed;
-}
-span.cp {
-	color: #ee00ee;
-}
-span.cc {
-	color: #00ef00;
-}
-span.cw {
-	color: #efefef;
-}
-span.cll {
-	color: #333333;
-	font-weight: bold;
-}
-span.crr {
-	color: #ff0000;
-	font-weight: bold;
-}
-span.cgg {
-	color: #00ff00;
-	font-weight: bold;
-}
-span.cyy {
-	color: #ffff00;
-	font-weight: bold;
-}
-span.cbb {
-	color: #0000ff;
-	font-weight: bold;
-}
-span.cpp {
-	color: #800080;
-	font-weight: bold;
-}
-span.ccc {
-	color: #00ff00;
-	font-weight: bold;
-}
-span.cww {
-	color: #ffffff;
-	font-weight: bold;
+@media print {
+	body {
+		color: black;
+		background: white;
+	}
+	span.c1 {
+		font-weight: bold;
+	}
+	span.bold {
+		font-weight: bold;
+	}
+	span.cll {
+		font-weight: bold;
+	}
+	span.crr {
+		font-weight: bold;
+	}
+	span.cgg {
+		font-weight: bold;
+	}
+	span.cyy {
+		font-weight: bold;
+	}
+	span.cbb {
+		font-weight: bold;
+	}
+	span.cpp {
+		font-weight: bold;
+	}
+	span.ccc {
+		font-weight: bold;
+	}
+	span.cww {
+		font-weight: bold;
+	}
 }
