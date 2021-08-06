@@ -195,7 +195,10 @@ main (string str, object this)
     /*  Check for objects in player's inventory and environment
 	 */
 
-    ob = present(targstr);
+    if (targstr == "me" || targstr == "myself")
+        ob = THIS;
+    else
+        ob = present(targstr);
 
     if (ob)
     {
