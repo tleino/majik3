@@ -89,6 +89,7 @@ get_name (string str)
 {
   str = lower_case (str);
 
+  write_file ("/log/logins", ctime() + " :: " + " login: " + str + "\n");
 
   if (str == "guest")
     str = ({ "guest1", "guest2", "guest3" })[random(3)];
