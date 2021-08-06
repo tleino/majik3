@@ -30,7 +30,7 @@ create_room ()
   add_sound ("A fish pops up out of the water and drops back in.");
   add_sound ("The grass sways in the breeze.");
 
-  add_monster (MONSTER_PATH + "younggirl.c");
+  add_object (MONSTER_PATH + "younggirl.c");
 
 }
 

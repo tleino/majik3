@@ -29,9 +29,9 @@ create_room ()
     "The hut is a little large and is well constructed. There is a"
   + " symbol of a wooden cart over the entrance.\n");
 
-  add_monster(MONSTER_PATH + "barcos.c");
+  add_object(MONSTER_PATH + "barcos.c");
   add_object(ITEM_PATH + "cart.c");
-  add_monster(MONSTER_PATH + "bertha.c");
+  add_object(MONSTER_PATH + "bertha.c");
 
 }
 

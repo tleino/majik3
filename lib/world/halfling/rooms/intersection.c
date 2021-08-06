@@ -30,7 +30,7 @@ create_room ()
 
   add_sound ("You rub your eyes as some dust from the road is blown into them.");
 
-  add_monster (MONSTER_PATH + "rano.c");
+  add_object (MONSTER_PATH + "rano.c");
 
 }
 

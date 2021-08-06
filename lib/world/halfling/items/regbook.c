@@ -8,7 +8,7 @@ string *my_array = ({});
 
 create_item()
 {
-     restore_object("/home/pook/halfling/items/pook_book.o");
+     restore_object("/world/halfling/items/pook_book.o");
 
      set_name(({"book","registry book"}));
      set_short("Shire Registry Book");

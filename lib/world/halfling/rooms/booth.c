@@ -6,14 +6,14 @@
 
 inherit ROOM;
 
-string *check_array = "/home/pook/halfling/items/regbook.c"->query_members();
+string *check_array = "/world/halfling/items/regbook.c"->query_members();
 string *vote_a_array = ({});
 string *vote_b_array = ({});
 
 create_room ()
 {
-  restore_object("/home/pook/halfling/items/vote_a.o");
-  restore_object("/home/pook/halfling/items/vote_b.o");
+  restore_object("/world/halfling/items/vote_a.o");
+  restore_object("/world/halfling/items/vote_b.o");
 
   set_short ("Voting Booth");
   set_long (
@@ -51,14 +51,14 @@ do_vote(string what)
     {
      write(wrap("You vote for choice -A- on the current ballot.\n"));
      add_member_a(THIS->query_cap_name());
-     save_object("/home/pook/halfling/items/vote_a.o");
+     save_object("/world/halfling/items/vote_a.o");
      return 1;
     }
     if(what == "b")
     {
      write(wrap("You vote for choice -B- on the current ballot.\n"));
      add_member_b(THIS->query_cap_name());
-     save_object("/home/pook/halfling/items/vote_b.o");
+     save_object("/world/halfling/items/vote_b.o");
      return 1;
     }
     if(what != "a" && what != "b")

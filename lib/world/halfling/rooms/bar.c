@@ -43,9 +43,9 @@ create_room ()
   + "                     4 Gold\nShot                             "
   + "   1 Gold\nTo order something type order <name>.\n");
 
-  add_monster (MONSTER_PATH + "jaffer.c");
-  add_monster (MONSTER_PATH + "patan.c");
-  add_monster (MONSTER_PATH + "joel.c");
+  add_object (MONSTER_PATH + "jaffer.c");
+  add_object (MONSTER_PATH + "patan.c");
+  add_object (MONSTER_PATH + "joel.c");
 
 }
 

@@ -36,8 +36,8 @@ create_room ()
     "The fireplace and chimmney are made of stone. It is not"
   + " currently lit.\n");
 
-  add_monster (MONSTER_PATH + "sammy.c");
-  add_monster (MONSTER_PATH + "manny.c");
+  add_object (MONSTER_PATH + "sammy.c");
+  add_object (MONSTER_PATH + "manny.c");
 
 }
 

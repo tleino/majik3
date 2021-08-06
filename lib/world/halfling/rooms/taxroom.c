@@ -57,7 +57,7 @@ create_room ()
   set_outdoors (1);
   set_light (1);
 
-  add_monster (MONSTER_PATH + "taxwoman.c");
+  add_object (MONSTER_PATH + "taxwoman.c");
   add_object (ITEM_PATH + "regbook.c");
 
 }

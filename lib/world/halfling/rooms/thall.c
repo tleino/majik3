@@ -41,7 +41,7 @@ create_room ()
   set_light (1);
 
   add_object (ITEM_PATH + "pboard.c");
-  add_monster (MONSTER_PATH + "corin.c");
+  add_object (MONSTER_PATH + "corin.c");
 
 }
 

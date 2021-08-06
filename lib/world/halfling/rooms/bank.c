@@ -39,7 +39,7 @@ create_room ()
 
   set_outdoors (4);
 
-  add_monster (MONSTER_PATH + "jules.c");
+  add_object (MONSTER_PATH + "jules.c");
 
 }
 

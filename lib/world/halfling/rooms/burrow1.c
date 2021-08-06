@@ -34,7 +34,7 @@ create_room ()
   + "ne, standard for the Shire. Outside you see mostly rolling pl"
   + "ains, but a bit off in the distance is a small lake.\n");
 
-  add_monster (MONSTER_PATH + "siline.c");
+  add_object (MONSTER_PATH + "siline.c");
 
 }
 
