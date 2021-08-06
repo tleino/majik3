@@ -545,6 +545,8 @@ setup (string str, int _guest)
         guest = _guest;
         version = 20;
         THIS->set("gender", 1 + random(2));
+        if (THIS->query("term") == 5)
+            THIS->set("prompt", "off");
         o_line ("You are ^cG" + name + "^c0.\n");
 
         if (guest == 1)
